@@ -1,144 +1,195 @@
-<a href="https://webmesh.cc"><img src="assets/hero.svg" alt="WebMesh — Sovereign Search Gateway" width="100%"/></a>
-
 <div align="center">
 
-<a href="https://webmesh.cc"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2600&pause=700&color=7CF3FF&center=true&vCenter=true&width=640&lines=type+a+.ton+name+%E2%86%92+see+its+whole+world;owners+%C2%B7+wallets+%C2%B7+flows+%C2%B7+graph;no+signup.+no+API+key.+just+curl." alt="typing"/></a>
+ <a href="https://webmesh.cc">
+  <img src="assets/banner.svg" alt="WebMesh: a free, keyless API that resolves .ton domains and maps wallets and flows into one shared graph" width="100%">
+</a>
 
-<br/>
+ <a href="https://webmesh.cc"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=2600&pause=700&color=7CF3FF&center=true&vCenter=true&width=640&lines=type+a+.ton+name+%E2%86%92+see+its+whole+world;owners+%C2%B7+wallets+%C2%B7+flows+%C2%B7+graph;no+signup.+no+API+key.+just+curl." alt="typing"/></a>
 
-<a href="https://webmesh.cc"><img src="https://img.shields.io/badge/⚡_LIVE-webmesh.cc-7cf3ff?style=for-the-badge&labelColor=0b0f1f"/></a>
-<a href="https://webmesh.cc/openapi.json"><img src="https://img.shields.io/badge/📜_OPENAPI-3.0-a78bfa?style=for-the-badge&labelColor=0b0f1f"/></a>
-<a href="https://ton.org"><img src="https://img.shields.io/badge/💎_BUILT_FOR-TON-0098ea?style=for-the-badge&labelColor=0b0f1f"/></a>
-<img src="https://img.shields.io/badge/🔑_API_KEY-none-86efac?style=for-the-badge&labelColor=0b0f1f"/>
+<br>
+
+[![Live: webmesh.cc](https://img.shields.io/badge/live-webmesh.cc-7cf3ff?style=for-the-badge&labelColor=0b0f1f)](https://webmesh.cc)
+[![OpenAPI 3.0](https://img.shields.io/badge/openapi-3.0-a78bfa?style=for-the-badge&labelColor=0b0f1f)](https://webmesh.cc/openapi.json)
+[![Built for TON](https://img.shields.io/badge/built_for-TON-0098ea?style=for-the-badge&labelColor=0b0f1f)](https://ton.org)
+[![API key: none](https://img.shields.io/badge/api_key-none-86efac?style=for-the-badge&labelColor=0b0f1f)](#quick-start)
+
+<br>
+
+[**Quick start**](#quick-start) &nbsp;·&nbsp; [**API**](#api) &nbsp;·&nbsp; [**For AI agents**](#for-ai-agents) &nbsp;·&nbsp; [**Draw the graph**](#draw-the-graph-yourself) &nbsp;·&nbsp; [**Privacy**](#privacy) &nbsp;·&nbsp; [**Roadmap**](#roadmap)
 
 </div>
 
-<br/>
+<img src="assets/divider.svg" alt="" width="100%">
 
-<table>
-<tr>
-<td width="50%" valign="top">
+<div align="center">
 
-### 🕸️ The idea
+### Resolve a `.ton` name. Follow the wallet. Watch the money move.
+**One free REST API. No signup. No API key. Every lookup grows a shared map of the TON name space.**
 
-Every `.ton` name is a door. Behind it — a wallet, behind the wallet — other names, other wallets, other flows of value.
+</div>
 
-**WebMesh opens those doors** and stitches everything it sees into one living graph. Each lookup by anyone makes the map a little bigger.
+<br>
 
-> *Read-only. Memory-only. Nobody's permission required.*
+<img src="assets/features.svg" alt="Resolve, Profile, Flows, Graph" width="100%">
 
-</td>
-<td width="50%" valign="top">
+<br>
 
-### ⚡ In numbers
+<div align="center">
 
-```text
- endpoints ........ 5
- api keys ......... 0
- disk writes ...... 0   (RAM + tmpfs)
- signup ........... never
- cors ............. open
- llm-ready ........ yes (llms.txt)
+<img src="assets/terminal.svg" alt="WebMesh in a terminal" width="85%">
+
+</div>
+
+<img src="assets/divider.svg" alt="" width="100%">
+
+## Quick start
+
+Base URL: `https://webmesh.cc`
+
+```bash
+# Resolve a .ton name: owner, target, NFT, index
+curl https://webmesh.cc/WebMesh/api/resolve/foundation.ton
+
+# Profile by name or address: balance, status, owned domains
+curl https://webmesh.cc/WebMesh/api/profile/foundation.ton
+
+# Top counterparties of an address
+curl https://webmesh.cc/WebMesh/api/flows/<address>
+
+# The shared graph
+curl https://webmesh.cc/WebMesh/api/graph
 ```
 
-</td>
-</tr>
-</table>
+<!-- TODO: paste one real JSON response here (for example /resolve), so readers see the fields at a glance. -->
 
-<div align="center">
-<img src="assets/terminal.svg" alt="WebMesh in a terminal" width="85%"/>
-</div>
+<br>
 
-## 🧬 Superpowers
+## API
 
-<table>
-<tr>
-<td align="center" width="25%"><h1>🔎</h1><b>Resolve</b><br/><sub>.ton → owner, target,<br/>NFT, index</sub></td>
-<td align="center" width="25%"><h1>👤</h1><b>Profile</b><br/><sub>balance, status,<br/>every owned domain</sub></td>
-<td align="center" width="25%"><h1>💸</h1><b>Flows</b><br/><sub>who sends what<br/>to whom — TON & jettons</sub></td>
-<td align="center" width="25%"><h1>🕸️</h1><b>Graph</b><br/><sub>shared, growing,<br/>vis-network ready</sub></td>
-</tr>
-</table>
+| Endpoint | What you get | Limit |
+| :-- | :-- | --: |
+| `GET /WebMesh/api/resolve/{name}.ton` | owner · target · NFT · index | `20 / min` |
+| `GET /WebMesh/api/profile/{name_or_address}` | balance · status · owned domains | `20 / min` |
+| `GET /WebMesh/api/flows/{address}` | top-20 counterparties, TON and jettons | `10 / min` |
+| `GET /WebMesh/api/graph` | `{ nodes, links }` | `120 / min` |
+| `GET /WebMesh/api/health` | `{ ok, redis }` | none |
 
-## 🛰️ How it flows
+<!-- TODO: state whether limits are per IP, whether Retry-After is sent, and list the error codes (400 / 404 / 429 / 5xx) with an example error body. -->
+
+Errors are always JSON. A `429` means you hit the rate limit: wait a minute and retry.
+
+<br>
+
+## For AI agents
+
+WebMesh is built to be read by machines as easily as by people. Point your agent at either of these and it will figure out the rest:
+
+| | |
+| :-- | :-- |
+| **`llms.txt`** | [webmesh.cc/llms.txt](https://webmesh.cc/llms.txt) |
+| **OpenAPI 3.0** | [webmesh.cc/openapi.json](https://webmesh.cc/openapi.json) |
+
+<br>
+
+## Draw the graph yourself
+
+<details open>
+<summary><b>Ten lines to a live network</b></summary>
+
+<br>
+
+```html
+<script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+<div id="graph" style="height: 600px"></div>
+<script>
+  fetch('https://webmesh.cc/WebMesh/api/graph')
+    .then(r => r.json())
+    .then(({ nodes, links }) => {
+      const el = document.getElementById('graph');
+      const edges = links.map(l => ({ from: l.source, to: l.target }));
+      new vis.Network(el, { nodes, edges }, {});
+    });
+</script>
+```
+
+</details>
+
+<br>
+
+## How it flows
 
 ```mermaid
 flowchart LR
     classDef you fill:#14123a,stroke:#a78bfa,color:#fff
     classDef core fill:#0b0f1f,stroke:#7cf3ff,color:#7cf3ff
     classDef ext fill:#04202e,stroke:#0098ea,color:#fff
-    U["🧑‍💻 you / dApp / 🤖 agent"]:::you -->|HTTPS| G{{"🕸️ WebMesh"}}:::core
-    G <-->|"⚡ hot cache"| R[("Redis · RAM only")]:::core
+    U["you / dApp / agent"]:::you -->|HTTPS| G{{"WebMesh"}}:::core
+    G <-->|"hot cache"| R[("Redis · RAM only")]:::core
     G -.->|"logs"| T["tmpfs"]:::core
     G -->|"index"| A["tonapi.io"]:::ext
     G -->|"index"| C["toncenter.com"]:::ext
-    G ==>|"live"| V["🌐 graph UI"]:::you
+    G ==>|"live"| V["graph UI"]:::you
 ```
 
-## 📡 The API, in one breath
+<p align="center">
+  <img alt="Node.js" src="https://img.shields.io/badge/Node.js-0b0f1f?style=flat-square&logo=nodedotjs&logoColor=86efac">
+  <img alt="Express" src="https://img.shields.io/badge/Express-0b0f1f?style=flat-square&logo=express&logoColor=white">
+  <img alt="Redis" src="https://img.shields.io/badge/Redis-0b0f1f?style=flat-square&logo=redis&logoColor=ff4438">
+  <img alt="Linux" src="https://img.shields.io/badge/Linux-0b0f1f?style=flat-square&logo=linux&logoColor=white">
+</p>
 
-<details open>
-<summary><b>Endpoints</b></summary>
+<img src="assets/divider.svg" alt="" width="100%">
 
-<br/>
+## Privacy
 
-| | Endpoint | What you get | Rate |
-|:-:|---|---|:-:|
-| 🔎 | `GET /WebMesh/api/resolve/{name}.ton` | owner · target · NFT · index | `20/m` |
-| 👤 | `GET /WebMesh/api/profile/{name\|addr}` | balance · status · domains | `20/m` |
-| 💸 | `GET /WebMesh/api/flows/{addr}` | top-20 counterparties | `10/m` |
-| 🕸️ | `GET /WebMesh/api/graph` | `{ nodes, links }` | `120/m` |
-| 💚 | `GET /WebMesh/api/health` | `{ ok, redis }` | — |
+| | |
+| :-- | :-- |
+| **Shared graph** | Lookups feed a public graph. Anything you resolve may become visible to other users of `/graph`. |
+| **Memory-only** | Cache lives in Redis (RAM), logs go to tmpfs. Nothing is written to disk. |
+| **No accounts** | No signup, no API keys, no cookies. Read-only: WebMesh never touches your wallet. |
 
-</details>
+<!-- TODO: confirm how long logs live in tmpfs and whether client IPs are logged. -->
 
-<details>
-<summary><b>🤖 For AI agents</b></summary>
+<br>
 
-<br/>
+## Roadmap
 
-Point your agent at [`webmesh.cc/llms.txt`](https://webmesh.cc/llms.txt) or the [OpenAPI spec](https://webmesh.cc/openapi.json) — it'll figure out the rest. Errors are always JSON; `429` means *breathe for a minute*.
+| Stage | Status | Progress |
+| :-- | :-: | :-- |
+| Resolve | Done | `▰▰▰▰▰▰▰▰▰▰` |
+| Profiles | Done | `▰▰▰▰▰▰▰▰▰▰` |
+| Graph | Done | `▰▰▰▰▰▰▰▰▰▰` |
+| Flows | Done | `▰▰▰▰▰▰▰▰▰▰` |
+| History | Soon | `▱▱▱▱▱▱▱▱▱▱` |
+| Webhooks | Soon | `▱▱▱▱▱▱▱▱▱▱` |
+| SDK | Soon | `▱▱▱▱▱▱▱▱▱▱` |
 
-</details>
+Ideas and bug reports are welcome in [Issues](https://github.com/AuroraAccess/webmesh/issues).
 
-<details>
-<summary><b>🎨 Draw the graph yourself</b></summary>
+<br>
 
-<br/>
+## License
 
-```js
-const { nodes, links } = await fetch('https://webmesh.cc/WebMesh/api/graph').then(r => r.json());
-new vis.Network(el, { nodes, edges: links.map(l => ({ from: l.source, to: l.target })) }, {});
-```
+<!-- TODO: add a LICENSE file and name it here, for example "MIT". The repo currently has none. -->
 
-</details>
+<br>
 
-## 🧱 Made of
+<a href="https://webmesh.cc"><img src="assets/hero.svg" alt="WebMesh — Sovereign Search Gateway" width="100%"/></a>
 
 <div align="center">
 
-<img src="https://skillicons.dev/icons?i=nodejs,express,redis,linux&theme=dark" />
-
-</div>
-
-## 🗺️ Trajectory
-
-```text
- ●━━━━━━━━━●━━━━━━━━━●━━━━━━━━━●━━━━━━━━━○━━━━━━━━━○━━━━━━━━━○
- resolve   profiles  graph     flows     history   webhooks  sdk
- ✓         ✓         ✓         ✓         soon      soon      soon
-```
-
-<br/>
+<img src="assets/divider.svg" alt="" width="100%">
 
 <div align="center">
 
-<sub>WebMesh is independent and not affiliated with the TON Foundation or Telegram. Data comes from third-party indexers and may lag the chain.</sub>
+<br>
 
-<br/><br/>
+### [Open webmesh.cc →](https://webmesh.cc)
 
-**[✦ open webmesh.cc ✦](https://webmesh.cc)**
+If WebMesh is useful to you, star the repo.
 
-<sub>if this sparked something — leave a ⭐</sub>
+<br>
+
+<sub>WebMesh is independent and not affiliated with the TON Foundation or Telegram.<br>Data comes from third-party indexers and may lag the chain.</sub>
 
 </div>

@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-labelledby="t d">
+  <title id="t">WebMesh</title>
+  <desc id="d">WebMesh: a free keyless API that resolves .ton domains and maps wallets and flows into a shared graph.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b0f1f"/>
+      <stop offset="1" stop-color="#14123a"/>
+    </linearGradient>
+    <linearGradient id="ttl" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#7cf3ff"/>
+      <stop offset="1" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.72" cy="0.5" r="0.45">
+      <stop offset="0" stop-color="#0098ea" stop-opacity="0.38"/>
+      <stop offset="1" stop-color="#0098ea" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#7cf3ff" stroke-opacity="0.06"/>
+    </pattern>
+    <filter id="soft" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <style>
+      .e { stroke: #7cf3ff; stroke-opacity: .5; stroke-width: 1.5; stroke-dasharray: 4 8; animation: flow 2.2s linear infinite; }
+      .e2 { stroke: #a78bfa; stroke-opacity: .55; stroke-width: 1.5; stroke-dasharray: 4 8; animation: flow 3s linear infinite reverse; }
+      @keyframes flow { to { stroke-dashoffset: -24; } }
+      .n { transform-box: fill-box; transform-origin: center; animation: pulse 3s ease-in-out infinite; }
+      @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+      .ring { transform-box: fill-box; transform-origin: center; fill: none; stroke: #0098ea; stroke-width: 2; animation: ring 3.2s ease-out infinite; }
+      @keyframes ring { 0% { transform: scale(.6); opacity: .9; } 100% { transform: scale(3.2); opacity: 0; } }
+    </style>
+  </defs>
+
+  <rect width="1200" height="420" rx="24" fill="url(#bg)"/>
+  <rect width="1200" height="420" rx="24" fill="url(#grid)"/>
+  <rect width="1200" height="420" rx="24" fill="url(#glow)"/>
+
+  <!-- mesh edges -->
+  <g fill="none">
+    <line class="e" x1="760" y1="110" x2="900" y2="70"/>
+    <line class="e" x1="900" y1="70" x2="1040" y2="130"/>
+    <line class="e2" x1="760" y1="110" x2="850" y2="190"/>
+    <line class="e" x1="850" y1="190" x2="1040" y2="130"/>
+    <line class="e2" x1="850" y1="190" x2="990" y2="250"/>
+    <line class="e" x1="1040" y1="130" x2="990" y2="250"/>
+    <line class="e" x1="850" y1="190" x2="780" y2="300"/>
+    <line class="e2" x1="780" y1="300" x2="920" y2="340"/>
+    <line class="e" x1="990" y1="250" x2="920" y2="340"/>
+    <line class="e2" x1="990" y1="250" x2="1110" y2="330"/>
+    <line class="e" x1="920" y1="340" x2="1110" y2="330"/>
+    <line class="e2" x1="680" y1="200" x2="760" y2="110"/>
+    <line class="e" x1="680" y1="200" x2="850" y2="190"/>
+    <line class="e2" x1="680" y1="200" x2="780" y2="300"/>
+    <line class="e" x1="1040" y1="130" x2="1130" y2="200"/>
+    <line class="e2" x1="1130" y1="200" x2="990" y2="250"/>
+  </g>
+
+  <!-- hub glow + rings -->
+  <circle cx="850" cy="190" r="26" fill="#0098ea" opacity=".55" filter="url(#soft)"/>
+  <circle class="ring" cx="850" cy="190" r="14"/>
+  <circle class="ring" cx="850" cy="190" r="14" style="animation-delay:1.6s"/>
+
+  <!-- nodes -->
+  <g>
+    <circle class="n" cx="760" cy="110" r="7" fill="#7cf3ff"/>
+    <circle class="n" cx="900" cy="70" r="6" fill="#a78bfa" style="animation-delay:.4s"/>
+    <circle class="n" cx="1040" cy="130" r="8" fill="#7cf3ff" style="animation-delay:.8s"/>
+    <circle cx="850" cy="190" r="14" fill="#0098ea" stroke="#7cf3ff" stroke-width="2"/>
+    <circle class="n" cx="990" cy="250" r="8" fill="#a78bfa" style="animation-delay:1.2s"/>
+    <circle class="n" cx="780" cy="300" r="6" fill="#7cf3ff" style="animation-delay:1.6s"/>
+    <circle class="n" cx="920" cy="340" r="7" fill="#7cf3ff" style="animation-delay:2s"/>
+    <circle class="n" cx="1110" cy="330" r="6" fill="#a78bfa" style="animation-delay:.2s"/>
+    <circle class="n" cx="680" cy="200" r="6" fill="#a78bfa" style="animation-delay:1s"/>
+    <circle class="n" cx="1130" cy="200" r="5" fill="#7cf3ff" style="animation-delay:1.4s"/>
+  </g>
+  <text x="850" y="195" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" font-weight="700" fill="#fff">.ton</text>
+
+  <!-- text -->
+  <text x="80" y="112" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" letter-spacing="5" fill="#7cf3ff" opacity=".85">SOVEREIGN SEARCH GATEWAY · TON</text>
+  <text x="76" y="205" font-family="'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="108" font-weight="800" letter-spacing="-2" fill="url(#ttl)">WebMesh</text>
+  <text x="80" y="258" font-family="'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="28" fill="#cbd5e1">Every <tspan fill="#7cf3ff" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">.ton</tspan> name is a door. We open them all.</text>
+
+  <!-- pills -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#e2e8f0" text-anchor="middle">
+    <rect x="80" y="296" width="124" height="36" rx="18" fill="#7cf3ff" fill-opacity=".1" stroke="#7cf3ff" stroke-opacity=".5"/>
+    <text x="142" y="319">no signup</text>
+    <rect x="218" y="296" width="132" height="36" rx="18" fill="#a78bfa" fill-opacity=".12" stroke="#a78bfa" stroke-opacity=".6"/>
+    <text x="284" y="319">no API key</text>
+    <rect x="364" y="296" width="124" height="36" rx="18" fill="#0098ea" fill-opacity=".15" stroke="#0098ea" stroke-opacity=".8"/>
+    <text x="426" y="319">read-only</text>
+  </g>
+</svg>
